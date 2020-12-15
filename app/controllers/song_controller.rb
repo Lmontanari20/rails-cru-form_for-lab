@@ -1,0 +1,34 @@
+class SongController
+    before_action :set_song, only: [:show, :edit, :update]
+    
+    def show
+    end
+
+    def new
+        @song = Song.new
+    end
+
+    def create
+        @song = Song.create(set_params)
+        redirect_to @song
+    end
+
+    def edit
+    end
+
+    def update
+        @song.update(set_params)
+        redirect_to @song
+    end
+
+    private
+
+    def set_song
+        @song = Song.find(params[:id])
+    end
+
+    def set_params
+        params.require(:song).permit(:name, :bio)
+    end
+
+end
