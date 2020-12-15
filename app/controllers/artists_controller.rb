@@ -1,4 +1,4 @@
-class ArtistController
+class ArtistsController < ApplicationController
     before_action :set_artist, only: [:show, :edit, :update]
     
     def show
@@ -21,14 +21,15 @@ class ArtistController
         redirect_to @artist
     end
 
-    private
-
     def set_artist
         @artist = Artist.find(params[:id])
     end
+    
+    private
 
-    def set_params
-        params.require(:artist).permit(:name)
-    end
+
+        def set_params
+            params.require(:artist).permit(:name)
+        end
 
 end
